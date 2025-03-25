@@ -1,8 +1,8 @@
 // src/pages/Education.jsx
 import React, { useEffect, useState } from "react";
 import { getEducationData } from "../services/educationService.jsx";
-import "../styles/Education.css";
-import EducationTable from "../components/EducationTable.jsx";
+/*import "../styles/Education.css";
+import EducationTable from "../components/EducationTable.jsx";*/
 
 const Education = () => {
     /*

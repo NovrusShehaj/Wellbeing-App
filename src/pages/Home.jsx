@@ -1,7 +1,5 @@
 // src/pages/Home.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "../index.css";
 import "../styles/Link.css"
@@ -121,27 +119,6 @@ const Home = () => {
                    rel="noopener noreferrer" className="link-button">Economic Summary</a>
             </div>
 
-            <h1 className="text-blue-200 text-3xl font-extrabold mt-10 mb-5 flex justify-center items-center">Local
-                Resources</h1>
-            <div className="filters">
-                <button onClick={() => setFilter("all")}>All</button>
-                <button onClick={() => setFilter("government")}>Government</button>
-                <button onClick={() => setFilter("education")}>Education</button>
-                <button onClick={() => setFilter("medical")}>Medical</button>
-            </div>
-            <div className="map-container">
-                <MapContainer center={hartfordPosition} zoom={13} style={{height: "500px", width: "500px"}}>
-                    <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    />
-                    {filteredResources.map((resource, index) => (
-                        <Marker key={index} position={resource.position}>
-                            <Popup>{resource.name}</Popup>
-                        </Marker>
-                    ))}
-                </MapContainer>
-            </div>
         </div>
     );
 };

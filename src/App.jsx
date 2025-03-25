@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './pages/Navbar.jsx';
 import Home from './pages/Home.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import Map from './pages/MapContainer.jsx';
+import MapPage from './pages/MapContainer.jsx';  // Ensure correct import
 import Education from './pages/Education.jsx';
 import Resources from './pages/Resources.jsx';
 import Housing from './pages/Housing.jsx';
@@ -20,8 +20,7 @@ const App = () => {
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/MapContainer" element={<Map />} />
-                    <Route path="/education" element={<Education />} />
+                    <Route path="/map-container" element={<MapPage />} />
                     <Route path="/resources" element={<Resources />} />
                     <Route path="/housing" element={<Housing />} />
                     <Route path="/trend-analysis" element={<TrendAnalysis />} />

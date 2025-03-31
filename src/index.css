@@ -296,3 +296,18 @@ body {
     transform: rotate(0deg);
   }
 }
+
+/* Fix for Leaflet tiles in dark mode */
+.leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+.leaflet-container {
+  background-color: #111827 !important;
+}
+
+/* Fix for attribution text */
+.leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.7) !important;
+  color: #9CA3AF !important;
+}

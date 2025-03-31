@@ -142,7 +142,7 @@ const AccessToServices = () => {
                             className="resource-card text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 text-center object-center items-center transition-all">
                             <div className="text-blue-400 text-3xl mb-3">📅</div>
                             <h3 className="font-semibold text-lg mb-2 text-white">Upcoming Events</h3>
-                            <p className="text-gray-400 mb-4">Job fairs, housing workshops, and community meetings</p>
+                            <p className="text-gray-400 mb-4 text-center">Job fairs, housing workshops, and community meetings</p>
                             <Link
                                 to="/calendar"
                                 className="bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 object-center rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"
@@ -154,7 +154,7 @@ const AccessToServices = () => {
                             className="resource-card text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
                             <div className="text-blue-400 text-3xl mb-3">📝</div>
                             <h3 className="font-semibold text-lg mb-2 text-white">Application Assistance</h3>
-                            <p className="text-gray-400 mb-4">Help with housing and job applications</p>
+                            <p className="text-gray-400 mb-4 text-center">Help with housing and job applications</p>
                             <Link
                                 to="/application-assistance"
                                 className="bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 object-center rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"
@@ -166,7 +166,7 @@ const AccessToServices = () => {
                             className="resource-card text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
                             <div className="text-blue-400 text-3xl mb-3">🤝</div>
                             <h3 className="font-semibold text-lg mb-2 text-white">Volunteer Opportunities</h3>
-                            <p className="text-gray-400 mb-4">Give back to your Hartford community</p>
+                            <p className="text-gray-400 mb-4 text-center">Give back to your Hartford community</p>
                             <Link
                                 to="/get-involved"
                                 className="bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 object-center rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"

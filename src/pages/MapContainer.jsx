@@ -35,6 +35,7 @@ const MapPage = () => {
     const [resetTrigger, setResetTrigger] = useState(false);
     const [selectedPosition, setSelectedPosition] = useState(null);
     const [filter, setFilter] = useState("all");
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
 
     const handleResetClick = () => {
         setResetTrigger(true);
@@ -135,9 +136,20 @@ const MapPage = () => {
 
     ]
 
-    const isEducationFilter = filter === "education";
+    const hospital_json = [
+        {id: 1, name: "Hartford Hospital", position: [41.75608336529734, -72.68043823752289], address: "80 Seymour St, Hartford, CT 06106", website: "https://hartfordhospital.org/", phone: "+18605455000"},
+        {id: 2, name: "Connecticut Children's Medical Center", position: [41.76570982711526, -72.68333870449491], address:" 282 Washington St, Hartford, CT 06106", website: "+18605459000"}
+    ]
+
     const allSchools = [...elementarymiddlejson, ...secondaryjson];
-    const markersToShow = isEducationFilter ? allSchools : resources;
+    const allHospitals = [...hospital_json];
+    const markersToShow = filter
+                            ? filter === "education"
+                            ? allSchools
+                            : filter === "medical"
+                            ? allHospitals
+                            : resources.filter(r => r.type === filter)
+                        : [...resources, ...allSchools, ...allHospitals];
 
     return (
         <div className="map-page">
@@ -156,41 +168,67 @@ const MapPage = () => {
                     ))}
                 </MapContainer>
             </div>
-
+    
             <div className="location-list">
-                <div className="list-container">
-                    <div className="filters-container">
-                        <div className="filters">
-                            <button onClick={() => setFilter("all")}>All</button>
-                            <button onClick={() => setFilter("government")}>Government</button>
-                            <button onClick={() => setFilter("education")}>Schools</button>
-                            <button onClick={() => setFilter("medical")}>Hospitals</button>
+                <button className="toggle-filter-btn" onClick={() => setIsFilterOpen(true)}>
+                    Filter Locations
+                </button>
+    
+                {isFilterOpen && (
+                    <div className="filter-panel">
+                        <h2>Filter Locations</h2>
+                        <div className="filter-buttons">
+                            <button onClick={() => { setFilter("government"); setIsFilterOpen(false); }}>Government</button>
+                            <button onClick={() => { setFilter("education"); setIsFilterOpen(false); }}>Schools</button>
+                            <button onClick={() => { setFilter("medical"); setIsFilterOpen(false); }}>Hospitals</button>
                         </div>
+                        <button className="close-filter-btn" onClick={() => setIsFilterOpen(false)}>Close</button>
                     </div>
-                    <div className="cards-container">
-                        {isEducationFilter ? (
-                            allSchools.map((school) => (
-                                <div key={school.id} className="location-card">
-                                    <h3>{school.name}</h3>
-                                    <p>{school.address}</p>
-                                    <a href={school.website} target="_blank" rel="noopener noreferrer">
-                                        Visit Website
-                                    </a>
-                                </div>
-                            ))
-                        ) : (
-                            resources.map((resource) => (
-                                <div key={resource.id} className="location-card" onClick={() => handleCardClick(resource.id)}>
-                                    <h3>{resource.name}</h3>
-                                </div>
-                            ))
+                )}
+    
+    <div className="list-container">
+    {markersToShow.length === 0 ? (
+        <div className="placeholder-message">
+            Use the filter to find locations.
+        </div>
+    ) : (
+        <div className="cards-container">
+            {filter === "education"
+                ? allSchools.map((school) => (
+                    <div key={school.id} className="location-card">
+                        <h3>{school.name}</h3>
+                        <p>{school.address}</p>
+                        <a href={school.website} target="_blank" rel="noopener noreferrer" className="highlight-bubble">
+                            Visit Website
+                        </a>
+                    </div>
+                ))
+                : filter === "medical"
+                ? allHospitals.map((hospital) => (
+                    <div key={hospital.id} className="location-card">
+                        <h3>{hospital.name}</h3>
+                        <p>{hospital.address}</p>
+                        {hospital.phone && (
+                            <p><a href={`tel:${hospital.phone}`}>{hospital.phone}</a></p>
                         )}
+                        <a href={hospital.website} target="_blank" rel="noopener noreferrer" className="highlight-bubble">
+                            Visit Website
+                        </a>
                     </div>
-                </div>
+                ))
+                : resources.filter(r => r.type === filter).map((resource) => (
+                    <div key={resource.id} className="location-card" onClick={() => handleCardClick(resource.id)}>
+                        <h3>{resource.name}</h3>
+                    </div>
+                ))}
+        </div>
+    )}
+</div>
+    
                 <button onClick={handleResetClick} className="reset-button">Reset Map</button>
             </div>
         </div>
     );
-};
-
+}
 export default MapPage;
+    

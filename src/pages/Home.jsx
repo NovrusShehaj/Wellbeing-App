@@ -6,18 +6,6 @@ import "../styles/Link.css"
 // src/pages/Home.jsx
 
 const Home = () => {
-    const hartfordPosition = [41.7658, -72.6734]; // Coordinates for Hartford, Connecticut
-    const [filter, setFilter] = useState("all");
-
-    const resources = [
-        { type: "government", position: [41.7658, -72.6734], name: "Government Building" },
-        { type: "education", position: [41.7688, -72.6754], name: "School" },
-        { type: "medical", position: [41.7628, -72.6714], name: "Hospital" },
-    ];
-
-    const filteredResources = filter === "all" ? resources : resources.filter(resource => resource.type === filter);
-
-
     return (
         <div className="home-container flex justify-center items-center">
             <div

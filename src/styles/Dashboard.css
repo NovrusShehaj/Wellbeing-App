@@ -19,3 +19,7 @@
 select, option {
     color: black;
 }
+
+.leaflet-tile {
+    filter: hue-rotate(0deg) !important;
+}

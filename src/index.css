@@ -196,6 +196,62 @@ body {
 
 }
 
+/* Calendar Styles */
+.calendar-day {
+  @apply h-12 border border-gray-700 flex items-center justify-center
+  cursor-pointer hover:bg-gray-800 transition-all duration-200;
+}
+
+.calendar-day-active {
+  @apply bg-blue-900 border-blue-400;
+}
+
+.calendar-day-today {
+  @apply border-yellow-400;
+}
+
+.event-dot {
+  @apply w-1 h-1 bg-blue-400 rounded-full mx-auto mt-1;
+}
+
+.calendar-header-day {
+  @apply text-center font-semibold text-gray-400 py-2;
+}
+
+.calendar-month-nav {
+  @apply text-white hover:text-blue-400 text-xl transition-colors;
+}
+
+.calendar-event-card {
+  @apply mb-4 p-4 bg-gray-800 rounded-lg border border-gray-700
+  hover:border-blue-400 transition-colors;
+}
+
+.calendar-event-title {
+  @apply font-bold text-lg text-white;
+}
+
+.calendar-event-detail {
+  @apply text-gray-300;
+}
+
+.calendar-event-description {
+  @apply text-gray-400 mt-2;
+}
+
+.calendar-container {
+  @apply bg-gray-900 border border-gray-700 rounded-lg p-6;
+}
+
+.calendar-sidebar {
+  @apply bg-gray-900 border border-gray-700 rounded-lg p-6 h-full;
+}
+
+/* Responsive calendar grid */
+.calendar-grid {
+  @apply grid grid-cols-7 gap-1;
+}
+
 .waving-hand {
   animation-name: wave-animation;
   animation-duration: 2.5s;
@@ -239,4 +295,19 @@ body {
   100% {
     transform: rotate(0deg);
   }
+}
+
+/* Fix for Leaflet tiles in dark mode */
+.leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+.leaflet-container {
+  background-color: #111827 !important;
+}
+
+/* Fix for attribution text */
+.leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.7) !important;
+  color: #9CA3AF !important;
 }

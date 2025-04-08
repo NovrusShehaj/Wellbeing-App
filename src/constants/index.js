@@ -43,7 +43,7 @@ export const navLinks = [
     {
         id: 9,
         name: 'Wellbeing Score',
-        href: '/aggregate-wellbeing-score',
+        href: '/wellbeing-score',
     },
 
 ];

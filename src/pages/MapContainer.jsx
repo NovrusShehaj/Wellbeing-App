@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  GeoJSON,
+  useMap,
+} from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { getNeighborhoods } from "../services/NeighborhoodService";
 
 // Custom icons with blue color scheme
 const govIcon = new L.Icon({
@@ -187,8 +195,25 @@ const MapPage = () => {
   const [selectedResource, setSelectedResource] = useState(null);
   const [filter, setFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [neighborhoods, setNeighborhoods] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
   const isMobile = width < 768;
+
+  useEffect(() => {
+    const fetchNeighborhoods = async () => {
+      try {
+        const data = await getNeighborhoods();
+        setNeighborhoods(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error loading neighborhoods:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchNeighborhoods();
+  }, []);
 
   const handleResetClick = () => {
     setResetTrigger(true);
@@ -231,6 +256,59 @@ const MapPage = () => {
     }
   };
 
+  const onEachNeighborhood = (feature, layer) => {
+    if (feature.properties && feature.properties.NAME) {
+      layer.bindPopup(
+        `<b>${feature.properties.NAME}</b><br>District ${feature.properties.MAPNUM}`,
+      );
+      layer.on({
+        mouseover: (e) => {
+          e.target.setStyle({
+            weight: 3,
+            color: "#fff",
+            dashArray: "",
+            fillOpacity: 0.7,
+          });
+        },
+        mouseout: (e) => {
+          e.target.setStyle({
+            weight: 2,
+            color: "white",
+            dashArray: "3",
+            fillOpacity: 0.7,
+          });
+        },
+      });
+    }
+  };
+
+  const styleNeighborhood = (feature) => {
+    const colors = [
+      "#1f77b4",
+      "#ff7f0e",
+      "#2ca02c",
+      "#d62728",
+      "#9467bd",
+      "#8c564b",
+      "#e377c2",
+      "#7f7f7f",
+      "#bcbd22",
+      "#17becf",
+    ];
+    return {
+      fillColor: colors[parseInt(feature.properties.MAPNUM) % colors.length],
+      weight: 2,
+      opacity: 1,
+      color: "white",
+      dashArray: "3",
+      fillOpacity: 0.7,
+    };
+  };
+
+  if (loading) {
+    return <div className="text-center py-8">Loading map data...</div>;
+  }
+
   return (
     <div className="bg-black text-white min-h-screen">
       <div className="container mx-auto px-4 py-8">
@@ -260,6 +338,17 @@ const MapPage = () => {
               <ResetMapView resetTrigger={resetTrigger} />
               <MoveToLocation position={selectedPosition} />
 
+              {/* Render neighborhood boundaries from MongoDB */}
+              {neighborhoods.map((neighborhood, index) => (
+                <GeoJSON
+                  key={index}
+                  data={neighborhood}
+                  style={styleNeighborhood}
+                  onEachFeature={onEachNeighborhood}
+                />
+              ))}
+
+              {/* Render resource markers */}
               {filteredResources.map((item) => (
                 <Marker
                   key={item.id}
@@ -290,7 +379,7 @@ const MapPage = () => {
             </MapContainer>
           </div>
 
-          {/* Sidebar Container */}
+          {/* Sidebar Container - remains the same */}
           <div className="w-full lg:w-1/3">
             <div className="bg-gray-900 border border-gray-700 rounded-lg p-6">
               {/* Filters */}

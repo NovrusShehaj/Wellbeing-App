@@ -200,18 +200,33 @@ const MapPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [neighborhoods, setNeighborhoods] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { width } = useWindowSize();
   const isMobile = width < 768;
+
+  // List of livable/sustainable districts
+  const livableSustainableDistricts = [
+    "Downtown",
+    "West End",
+    "South Green",
+    "Frog Hollow",
+    "Sheldon Charter Oak",
+  ];
 
   useEffect(() => {
     const fetchNeighborhoods = async () => {
       try {
-        // Get all sustainable neighborhoods
+        setLoading(true);
         const data = await getNeighborhoods();
-        setNeighborhoods(data);
-        setLoading(false);
+        if (data && Array.isArray(data)) {
+          setNeighborhoods(data);
+        } else {
+          setError("Invalid neighborhoods data format");
+        }
       } catch (error) {
         console.error("Error loading neighborhoods:", error);
+        setError("Failed to load neighborhood data");
+      } finally {
         setLoading(false);
       }
     };
@@ -260,58 +275,149 @@ const MapPage = () => {
     }
   };
 
-  const onEachNeighborhood = (feature, layer) => {
-    if (feature.properties && feature.properties.NAME) {
-      layer.bindPopup(`
-        <div class="p-2">
-          <h3 class="font-bold text-lg">${feature.properties.NAME}</h3>
-          <p class="text-sm"><strong>Inspector:</strong> ${feature.properties.Inspector}</p>
-          <p class="text-sm"><strong>Captain:</strong> ${feature.properties.Captian}</p>
-          <p class="text-sm"><strong>Area:</strong> ${feature.properties.ShapeSTArea.toLocaleString()} sq ft</p>
-        </div>
-      `);
-      layer.on({
-        mouseover: (e) => {
-          e.target.setStyle({
-            weight: 3,
-            color: "#fff",
-            dashArray: "",
-            fillOpacity: 0.9,
-          });
-        },
-        mouseout: (e) => {
-          e.target.setStyle({
-            weight: 2,
-            color: "white",
-            dashArray: "3",
-            fillOpacity: 0.7,
-          });
-        },
-      });
+  const onEachLivableNeighborhood = (feature, layer) => {
+    try {
+      if (feature.properties?.NAME) {
+        layer.bindTooltip(
+          `<div class="livable-tooltip">${feature.properties.NAME}<br><span class="livable-badge">Sustainable</span></div>`,
+          {
+            permanent: false,
+            direction: "top",
+            className: "livable-neighborhood-label",
+          },
+        );
+
+        layer.bindPopup(`
+          <div class="p-2">
+            <h3 class="font-bold text-lg text-green-700">${feature.properties.NAME}</h3>
+            <div class="bg-green-100 text-green-800 p-2 rounded-md mb-2 flex items-center">
+              <svg class="w-5 h-5 mr-2 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-bold">Livable & Sustainable District</span>
+            </div>
+            ${feature.properties.Inspector ? `<p class="text-sm"><strong>Inspector:</strong> ${feature.properties.Inspector}</p>` : ""}
+            ${feature.properties.Captain ? `<p class="text-sm"><strong>Captain:</strong> ${feature.properties.Captain}</p>` : ""}
+            ${feature.properties.ShapeSTArea ? `<p class="text-sm"><strong>Area:</strong> ${feature.properties.ShapeSTArea.toLocaleString()} sq ft</p>` : ""}
+          </div>
+        `);
+
+        layer.on({
+          mouseover: (e) => {
+            e.target.setStyle({
+              weight: 5,
+              color: "#ffffff",
+              fillOpacity: 1,
+              className: "livable-district-hover",
+            });
+            e.target.bringToFront();
+          },
+          mouseout: (e) => {
+            e.target.setStyle({
+              weight: 4,
+              color: "#ffffff",
+              fillOpacity: 0.9,
+              className: "livable-district-pulse",
+            });
+          },
+        });
+      }
+    } catch (err) {
+      console.error("Error rendering livable neighborhood feature:", err);
     }
   };
 
-  const styleNeighborhood = (feature) => {
-    const districtColors = {
-      "North District": "#FF6B6B",
-      "West District": "#4ECDC4",
-      "Central District": "#45B7D1",
-      "South District": "#FFBE0B",
-    };
+  const onEachRegularNeighborhood = (feature, layer) => {
+    try {
+      if (feature.properties?.NAME) {
+        layer.bindTooltip(feature.properties.NAME, {
+          permanent: false,
+          direction: "top",
+          className: "neighborhood-label",
+        });
 
+        layer.bindPopup(`
+          <div class="p-2">
+            <h3 class="font-bold text-lg">${feature.properties.NAME}</h3>
+            ${feature.properties.Inspector ? `<p class="text-sm"><strong>Inspector:</strong> ${feature.properties.Inspector}</p>` : ""}
+            ${feature.properties.Captain ? `<p class="text-sm"><strong>Captain:</strong> ${feature.properties.Captain}</p>` : ""}
+            ${feature.properties.ShapeSTArea ? `<p class="text-sm"><strong>Area:</strong> ${feature.properties.ShapeSTArea.toLocaleString()} sq ft</p>` : ""}
+          </div>
+        `);
+
+        layer.on({
+          mouseover: (e) => {
+            e.target.setStyle({
+              weight: 2,
+              color: "#e5e7eb",
+              fillOpacity: 0.6,
+            });
+            e.target.bringToFront();
+          },
+          mouseout: (e) => {
+            e.target.setStyle({
+              weight: 1,
+              color: "#e5e7eb",
+              fillOpacity: 0.4,
+            });
+          },
+        });
+      }
+    } catch (err) {
+      console.error("Error rendering regular neighborhood feature:", err);
+    }
+  };
+
+  const styleLivableNeighborhood = () => {
     return {
-      fillColor: districtColors[feature.properties.NAME] || "#888888",
-      weight: 2,
+      fillColor: "#22c55e", // Vibrant green
+      weight: 4, // Thicker border
       opacity: 1,
-      color: "white",
-      dashArray: "3",
-      fillOpacity: 0.7,
+      color: "#ffffff", // White border
+      dashArray: "",
+      fillOpacity: 0.9, // More opaque
+      className: "livable-district-pulse", // Animation class
+    };
+  };
+
+  const styleRegularNeighborhood = () => {
+    return {
+      fillColor: "#6b7280", // Dark gray
+      weight: 1,
+      opacity: 0.7,
+      color: "#e5e7eb", // Light gray border
+      dashArray: "5, 5", // Dashed border
+      fillOpacity: 0.4, // More transparent
     };
   };
 
   if (loading) {
     return <div className="text-center py-8">Loading map data...</div>;
   }
+
+  if (error) {
+    return (
+      <div className="text-center py-8 text-red-400">
+        Error: {error}
+        <button
+          onClick={() => window.location.reload()}
+          className="ml-4 bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
+        >
+          Retry
+        </button>
+      </div>
+    );
+  }
+
+  // Separate neighborhoods into livable and regular
+  const livableNeighborhoods = neighborhoods.filter((neighborhood) =>
+    livableSustainableDistricts.includes(neighborhood.properties?.NAME),
+  );
+
+  const regularNeighborhoods = neighborhoods.filter(
+    (neighborhood) =>
+      !livableSustainableDistricts.includes(neighborhood.properties?.NAME),
+  );
 
   return (
     <div className="bg-black text-white min-h-screen">
@@ -343,18 +449,73 @@ const MapPage = () => {
               <ResetMapView resetTrigger={resetTrigger} />
               <MoveToLocation position={selectedPosition} />
 
-              {/* Render sustainable neighborhood boundaries */}
-              {neighborhoods.map((neighborhood, index) => (
-                <GeoJSON
-                  key={`${neighborhood.properties.NAME}-${index}`}
-                  data={{
-                    type: neighborhood.geometry.type,
-                    coordinates: neighborhood.geometry.coordinates,
-                  }}
-                  style={styleNeighborhood}
-                  onEachFeature={onEachNeighborhood}
-                />
-              ))}
+              {/* Render regular neighborhood boundaries first (gray) */}
+              {regularNeighborhoods.map((neighborhood, index) => {
+                try {
+                  const geometry = neighborhood?.geometry;
+                  if (!geometry || !geometry.type || !geometry.coordinates) {
+                    console.warn(
+                      "Invalid neighborhood geometry:",
+                      neighborhood,
+                    );
+                    return null;
+                  }
+
+                  return (
+                    <GeoJSON
+                      key={`regular-${neighborhood.properties?.NAME || index}-${index}`}
+                      data={{
+                        type: geometry.type,
+                        coordinates: geometry.coordinates,
+                        properties: neighborhood.properties || {},
+                      }}
+                      style={styleRegularNeighborhood}
+                      onEachFeature={onEachRegularNeighborhood}
+                    />
+                  );
+                } catch (err) {
+                  console.error(
+                    "Error rendering regular neighborhood:",
+                    err,
+                    neighborhood,
+                  );
+                  return null;
+                }
+              })}
+
+              {/* Render livable neighborhood boundaries on top (green) */}
+              {livableNeighborhoods.map((neighborhood, index) => {
+                try {
+                  const geometry = neighborhood?.geometry;
+                  if (!geometry || !geometry.type || !geometry.coordinates) {
+                    console.warn(
+                      "Invalid neighborhood geometry:",
+                      neighborhood,
+                    );
+                    return null;
+                  }
+
+                  return (
+                    <GeoJSON
+                      key={`livable-${neighborhood.properties?.NAME || index}-${index}`}
+                      data={{
+                        type: geometry.type,
+                        coordinates: geometry.coordinates,
+                        properties: neighborhood.properties || {},
+                      }}
+                      style={styleLivableNeighborhood}
+                      onEachFeature={onEachLivableNeighborhood}
+                    />
+                  );
+                } catch (err) {
+                  console.error(
+                    "Error rendering livable neighborhood:",
+                    err,
+                    neighborhood,
+                  );
+                  return null;
+                }
+              })}
 
               {/* Render resource markers */}
               {filteredResources.map((item) => (

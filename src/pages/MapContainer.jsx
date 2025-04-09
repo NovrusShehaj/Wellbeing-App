@@ -9,7 +9,10 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { getNeighborhoods } from "../services/NeighborhoodService";
+import {
+  getNeighborhoods,
+  getNeighborhoodsByName,
+} from "../services/NeighborhoodService";
 
 // Custom icons with blue color scheme
 const govIcon = new L.Icon({
@@ -203,6 +206,7 @@ const MapPage = () => {
   useEffect(() => {
     const fetchNeighborhoods = async () => {
       try {
+        // Get all sustainable neighborhoods
         const data = await getNeighborhoods();
         setNeighborhoods(data);
         setLoading(false);
@@ -258,16 +262,21 @@ const MapPage = () => {
 
   const onEachNeighborhood = (feature, layer) => {
     if (feature.properties && feature.properties.NAME) {
-      layer.bindPopup(
-        `<b>${feature.properties.NAME}</b><br>District ${feature.properties.MAPNUM}`,
-      );
+      layer.bindPopup(`
+        <div class="p-2">
+          <h3 class="font-bold text-lg">${feature.properties.NAME}</h3>
+          <p class="text-sm"><strong>Inspector:</strong> ${feature.properties.Inspector}</p>
+          <p class="text-sm"><strong>Captain:</strong> ${feature.properties.Captian}</p>
+          <p class="text-sm"><strong>Area:</strong> ${feature.properties.ShapeSTArea.toLocaleString()} sq ft</p>
+        </div>
+      `);
       layer.on({
         mouseover: (e) => {
           e.target.setStyle({
             weight: 3,
             color: "#fff",
             dashArray: "",
-            fillOpacity: 0.7,
+            fillOpacity: 0.9,
           });
         },
         mouseout: (e) => {
@@ -283,20 +292,15 @@ const MapPage = () => {
   };
 
   const styleNeighborhood = (feature) => {
-    const colors = [
-      "#1f77b4",
-      "#ff7f0e",
-      "#2ca02c",
-      "#d62728",
-      "#9467bd",
-      "#8c564b",
-      "#e377c2",
-      "#7f7f7f",
-      "#bcbd22",
-      "#17becf",
-    ];
+    const districtColors = {
+      "North District": "#FF6B6B",
+      "West District": "#4ECDC4",
+      "Central District": "#45B7D1",
+      "South District": "#FFBE0B",
+    };
+
     return {
-      fillColor: colors[parseInt(feature.properties.MAPNUM) % colors.length],
+      fillColor: districtColors[feature.properties.NAME] || "#888888",
       weight: 2,
       opacity: 1,
       color: "white",
@@ -318,7 +322,8 @@ const MapPage = () => {
             Hartford Resources Map
           </h1>
           <h2 className="text-blue-200 font-medium text-xl md:text-2xl">
-            Explore community resources in Hartford
+            Explore community resources and sustainable neighborhoods in
+            Hartford
           </h2>
         </div>
 
@@ -338,11 +343,14 @@ const MapPage = () => {
               <ResetMapView resetTrigger={resetTrigger} />
               <MoveToLocation position={selectedPosition} />
 
-              {/* Render neighborhood boundaries from MongoDB */}
+              {/* Render sustainable neighborhood boundaries */}
               {neighborhoods.map((neighborhood, index) => (
                 <GeoJSON
-                  key={index}
-                  data={neighborhood}
+                  key={`${neighborhood.properties.NAME}-${index}`}
+                  data={{
+                    type: neighborhood.geometry.type,
+                    coordinates: neighborhood.geometry.coordinates,
+                  }}
                   style={styleNeighborhood}
                   onEachFeature={onEachNeighborhood}
                 />
@@ -379,7 +387,7 @@ const MapPage = () => {
             </MapContainer>
           </div>
 
-          {/* Sidebar Container - remains the same */}
+          {/* Sidebar Container */}
           <div className="w-full lg:w-1/3">
             <div className="bg-gray-900 border border-gray-700 rounded-lg p-6">
               {/* Filters */}

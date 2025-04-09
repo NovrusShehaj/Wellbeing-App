@@ -12,26 +12,81 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get a specific neighborhood by ID
-router.get("/:id", async (req, res) => {
+// Get neighborhoods by name
+router.get("/name/:name", async (req, res) => {
   try {
-    const neighborhood = await Neighborhood.findById(req.params.id);
-    if (!neighborhood) {
-      return res.status(404).json({ message: "Neighborhood not found" });
-    }
-    res.json(neighborhood);
+    const neighborhoods = await Neighborhood.find({
+      "properties.NAME": req.params.name,
+    });
+    res.json(neighborhoods);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Import GeoJSON data (run this once to seed your database)
-router.post("/import", async (req, res) => {
+// Get neighborhoods within a geographic area
+router.get("/within", async (req, res) => {
   try {
-    // This would be called once with your GeoJSON data
-    const data = require("../data/Neighborhood_Districts.geojson");
-    const result = await Neighborhood.insertMany(data.features);
-    res.json({ message: "Data imported successfully", count: result.length });
+    const { lng, lat, radius } = req.query;
+    if (!lng || !lat || !radius) {
+      return res.status(400).json({
+        message: "Please provide lng, lat, and radius query parameters",
+      });
+    }
+
+    const neighborhoods = await Neighborhood.find({
+      geometry: {
+        $geoWithin: {
+          $centerSphere: [
+            [parseFloat(lng), parseFloat(lat)],
+            parseFloat(radius) / 6378.1, // Convert km to radians
+          ],
+        },
+      },
+    });
+
+    res.json(neighborhoods);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Import GeoJSON data for sustainable neighborhoods
+router.post("/import-sustainable", async (req, res) => {
+  try {
+    const fs = require("fs");
+    const path = require("path");
+    const geojsonPath = path.join(
+      __dirname,
+      "../data/Livable_Sustainable_Neighborhood_Districts.geojson",
+    );
+    const rawData = fs.readFileSync(geojsonPath, "utf8");
+    const data = JSON.parse(rawData);
+
+    const features = data.features.map((feature) => ({
+      type: feature.type,
+      properties: {
+        OBJECTID: feature.properties.OBJECTID,
+        HPD_NH_ID: feature.properties.HPD_NH_ID,
+        ID: feature.properties.ID,
+        NAME: feature.properties.NAME,
+        GlobalID: feature.properties.GlobalID,
+        Inspector: feature.properties.Inspector,
+        Captian: feature.properties.Captian,
+        ShapeSTArea: feature.properties.ShapeSTArea,
+        ShapeSTLength: feature.properties.ShapeSTLength,
+      },
+      geometry: {
+        type: feature.geometry.type,
+        coordinates: feature.geometry.coordinates,
+      },
+    }));
+
+    const result = await Neighborhood.insertMany(features);
+    res.json({
+      message: "Sustainable neighborhoods imported successfully",
+      count: result.length,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

@@ -116,7 +116,7 @@ const Dashboard = () => {
           <h1 className="text-blue-400 font-bold text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mb-2 lg:mb-4">
             Hartford Wellbeing Dashboard
           </h1>
-          <h2 className="text-blue-200 font-medium text-lg sm:text-xl lg:text-2xl xl:text-3xl">
+          <h2 className="text-blue-200 font-medium text-lg md:text-xl mt-[50px]">
             Comprehensive overview of community wellbeing metrics
           </h2>
         </div>

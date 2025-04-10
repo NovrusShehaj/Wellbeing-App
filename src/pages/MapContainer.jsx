@@ -542,7 +542,7 @@ const MapPage = () => {
             Hartford Resources Map
           </h1>
           <h2 className="text-blue-200 font-medium text-xl md:text-2xl">
-            Explore community resources in Hartford
+            Explore Community Resources in Hartford
           </h2>
         </div>
 

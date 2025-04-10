@@ -280,7 +280,7 @@ const DisparityHighlighting = () => {
                     <h1 className="text-blue-400 font-bold text-5xl md:text-6xl mb-4">
                         Hartford Wellbeing Disparities
                     </h1>
-                    <h2 className="text-blue-200 font-medium text-2xl md:text-3xl">
+                    <h2 className="text-blue-200 font-medium text-lg md:text-xl mt-[50px]">
                         Identifying and addressing inequalities across neighborhoods
                     </h2>
                 </div>
@@ -394,7 +394,7 @@ const DisparityHighlighting = () => {
                                         <div className="mt-6">
                                             <Link
                                                 to={`/neighborhood/${selectedNeighborhood.toLowerCase().replace(/\s+/g, '-')}`}
-                                                className="block text-center bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600"
+                                                className="block text-center bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600 no-underline"
                                             >
                                                 View Neighborhood Details
                                             </Link>
@@ -451,10 +451,10 @@ const DisparityHighlighting = () => {
                                 </div>
                                 <div className="bg-gray-800 p-4 rounded-lg">
                                     <h3 className="text-lg font-semibold text-blue-300 mb-2">Disparity Gap</h3>
-                                    <p className="text-2xl font-bold text-white">
+                                    <p className="text-2xl font-bold text-white text-center">
                                         {Math.max(...disparityData[selectedMetric].map(item => item.score)) -
                                             Math.min(...disparityData[selectedMetric].map(item => item.score))}
-                                        <span className="text-lg text-gray-400 ml-1">points</span>
+                                        <span className="text-lg text-gray-400 ml-1 text-center">points</span>
                                     </p>
                                 </div>
                             </div>
@@ -479,7 +479,7 @@ const DisparityHighlighting = () => {
                             <p className="text-gray-400 text-center mb-4">Download detailed reports on neighborhood disparities</p>
                             <Link
                                 to="/disparity-reports"
-                                className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"
+                                className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform no-underline"
                             >
                                 View Reports
                             </Link>
@@ -492,7 +492,7 @@ const DisparityHighlighting = () => {
                             <p className="text-gray-400 text-center mb-4">Detailed profiles for each Hartford neighborhood</p>
                             <Link
                                 to="/neighborhood-profiles"
-                                className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"
+                                className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform no-underline"
                             >
                                 Explore Neighborhoods
                             </Link>
@@ -505,7 +505,7 @@ const DisparityHighlighting = () => {
                             <p className="text-gray-400 text-center mb-4">See how disparities have changed over time</p>
                             <Link
                                 to="/trend-analysis"
-                                className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"
+                                className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform no-underline"
                             >
                                 View Trends
                             </Link>

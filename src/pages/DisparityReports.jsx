@@ -30,10 +30,10 @@ const DisparityReports = () => {
         <div className="bg-black text-white min-h-screen">
             <div className="container mx-auto px-4 py-10">
                 <div className="text-center mb-12">
-                    <h1 className="text-blue-400 font-bold text-5xl md:text-6xl mb-4">
+                    <h1 className="text-blue-400 font-extrabold text-5xl">
                         Disparity Reports
                     </h1>
-                    <h2 className="text-blue-200 font-medium text-2xl md:text-3xl">
+                    <h2 className="text-blue-200 font-medium text-lg md:text-xl mt-[50px]">
                         Download detailed reports on neighborhood disparities
                     </h2>
                 </div>
@@ -42,7 +42,7 @@ const DisparityReports = () => {
                     {reports.map(report => (
                         <div 
                         key={report.id}
-                        className="relative flex flex-col h-full bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all h-[350px]"
+                        className="relative flex flex-col h-full bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all h-[400px]"
                         >
                         <div>
                             <div className="text-blue-400 text-3xl mb-3">📋</div>

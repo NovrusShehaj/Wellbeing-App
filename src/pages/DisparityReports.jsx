@@ -40,18 +40,18 @@ const DisparityReports = () => {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 items-stretch">
                     {reports.map(report => (
-                        <div 
+                        <div
                         key={report.id}
-                        className="relative flex flex-col h-full bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all h-[400px]"
+                        className="flex flex-col justify-between h-[400px] bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all"
                         >
-                        <div>
-                            <div className="text-blue-400 text-3xl mb-3">📋</div>
+                        <div className="mb-4" style={{ minHeight: '110px' }}>
+                            <div className="text-blue-400 text-3xl mb-2">📋</div>
                             <h3 className="text-xl font-bold text-white">{report.title}</h3>
                         </div>
-                        <div className="absolute top-[40%] left-0 right-0 px-6 transform">
-                            <p className="text-gray-400 text-base">{report.description}</p>
-                        </div>
-                        <div className="mt-auto flex justify-between items-center relative z-10 pt-4">
+
+                        <p className="text-gray-400 text-base mb-6">{report.description}</p>
+
+                        <div className="flex justify-between items-center mt-auto">
                             <span className="text-sm text-gray-500">{report.date}</span>
                             <a
                             href={report.downloadLink}
@@ -65,9 +65,10 @@ const DisparityReports = () => {
                     ))}
                     </div>
 
+
                 <div className="bg-gray-900 border border-gray-700 rounded-lg p-8 text-center">
                     <h3 className="text-xl font-bold text-blue-400 mb-4">Request Custom Report</h3>
-                    <p className="text-gray-400 mb-6">Need specific disparity data analyzed? Our team can prepare customized reports.</p>
+                    <p className="text-gray-400 mb-6 text-center">Need specific disparity data analyzed? Our team can prepare customized reports.</p>
                     <button className="bg-blue-800 hover:bg-blue-700 text-white py-2 px-6 rounded-md transition-colors border border-blue-600">
                         Contact Our Research Team
                     </button>

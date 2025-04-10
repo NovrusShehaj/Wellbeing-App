@@ -70,7 +70,7 @@ const Resources = () => {
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen text-center">
       <div className="container mx-auto px-4 py-8 lg:py-12">
         {/* Header Section */}
         <div className="text-center mb-10 lg:mb-14">
@@ -131,7 +131,7 @@ const Resources = () => {
                       href={resource.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block hover:text-blue-300 transition-colors"
+                      className="block hover:text-blue-300 transition-colors no-underline hover:no-underline text-center"
                     >
                       <h3 className="font-medium">{resource.name}</h3>
                       <p className="text-sm text-gray-400">
@@ -151,7 +151,7 @@ const Resources = () => {
             Need More Help?
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gray-800 p-5 rounded-lg">
+            <div className="bg-gray-800 p-5 rounded-lg text-center">
               <h3 className="font-bold text-lg mb-3 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -239,7 +239,7 @@ const Resources = () => {
                 <li>
                   <a
                     href="https://example.com"
-                    className="text-blue-400 hover:underline"
+                    className="text-blue-400 no-underline hover:no-underline text-center"
                   >
                     CT.gov Services
                   </a>
@@ -247,7 +247,7 @@ const Resources = () => {
                 <li>
                   <a
                     href="https://example.com"
-                    className="text-blue-400 hover:underline"
+                    className="text-blue-400 no-underline hover:no-underline text-center"
                   >
                     FindHelp.org
                   </a>
@@ -255,7 +255,7 @@ const Resources = () => {
                 <li>
                   <a
                     href="https://example.com"
-                    className="text-blue-400 hover:underline"
+                    className="text-blue-400 no-underline hover:no-underline text-center"
                   >
                     211 Connecticut
                   </a>

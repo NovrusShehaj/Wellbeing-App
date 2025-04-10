@@ -133,52 +133,57 @@ const AccessToServices = () => {
                 </div>
 
                 {/* Additional Resources */}
-                <div className="additional-resources bg-gray-900 border border-gray-700 rounded-lg p-8">
-                    <h2 className="text-2xl font-bold text-blue-400 mb-8 text-center">
-                        Additional Resources
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        <div
-                            className="resource-card text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 text-center object-center items-center transition-all">
-                            <div className="text-blue-400 text-3xl mb-3">📅</div>
-                            <h3 className="font-semibold text-lg mb-2 text-white">Upcoming Events</h3>
-                            <p className="text-gray-400 mb-4 text-center">Job fairs, housing workshops, and community meetings</p>
-                            <Link
-                                to="/calendar"
-                                className="bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 object-center rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"
-                            >
-                                View Calendar
-                            </Link>
-                        </div>
-                        <div
-                            className="resource-card text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
-                            <div className="text-blue-400 text-3xl mb-3">📝</div>
-                            <h3 className="font-semibold text-lg mb-2 text-white">Application Assistance</h3>
-                            <p className="text-gray-400 mb-4 text-center">Help with housing and job applications</p>
-                            <Link
-                                to="/application-assistance"
-                                className="bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 object-center rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"
-                            >
-                                Learn More
-                            </Link>
-                        </div>
-                        <div
-                            className="resource-card text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
-                            <div className="text-blue-400 text-3xl mb-3">🤝</div>
-                            <h3 className="font-semibold text-lg mb-2 text-white">Volunteer Opportunities</h3>
-                            <p className="text-gray-400 mb-4 text-center">Give back to your Hartford community</p>
-                            <Link
-                                to="/get-involved"
-                                className="bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 object-center rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform"
-                            >
-                                Get Involved
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+        <div className="additional-resources bg-gray-900 border border-gray-700 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-blue-400 mb-8 text-center">
+            Additional Resources
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="resource-card flex flex-col justify-between h-[300px] text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
+              <div>
+                <div className="text-blue-400 text-3xl mb-3">📅</div>
+                <h3 className="font-semibold text-lg mb-2 text-white">Upcoming Events</h3>
+                <p className="text-gray-400 text-base">Job fairs, housing workshops, and community meetings</p>
+              </div>
+              <Link
+                to="/calendar"
+                className="mt-6 bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform no-underline"
+              >
+                View Calendar
+              </Link>
             </div>
+
+            <div className="resource-card flex flex-col justify-between h-[300px] text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
+              <div>
+                <div className="text-blue-400 text-3xl mb-3">📝</div>
+                <h3 className="font-semibold text-lg mb-2 text-white">Application Assistance</h3>
+                <p className="text-gray-400 text-base">Help with housing and job applications</p>
+              </div>
+              <Link
+                to="/application-assistance"
+                className="mt-6 bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform no-underline"
+              >
+                Learn More
+              </Link>
+            </div>
+
+            <div className="resource-card flex flex-col justify-between h-[300px] text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
+              <div>
+                <div className="text-blue-400 text-3xl mb-3">🤝</div>
+                <h3 className="font-semibold text-lg mb-2 text-white">Volunteer Opportunities</h3>
+                <p className="text-gray-400 text-base">Give back to your Hartford community</p>
+              </div>
+              <Link
+                to="/get-involved"
+                className="mt-6 bg-blue-800 hover:bg-blue-700 text-white py-1 px-5 rounded-md transition-colors border border-blue-600 inline-block hover:scale-105 transform transition-transform no-underline"
+              >
+                Get Involved
+              </Link>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default AccessToServices;

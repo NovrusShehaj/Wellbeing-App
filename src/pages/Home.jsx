@@ -29,10 +29,8 @@ const Home = () => {
                             <p className="grid-headtext font-bold text-neutral-400 text-xl hover:text-white transition-colors mx-auto">About
                                 Our Project</p>
                             <p className="grid-subtext text-white text-lg">
-                                Our project aims to provide insights into the wellbeing of the Low- to middle-income
-                                families (particularly renters or those in need of affordable housing) and
-                                unemployed individuals in need of job/career opportunities within the Hartford, CT
-                                community.
+                            This project provides a centralized platform for accessing important housing, employment and general wellbeing resources in Hartford, CT. 
+                            By consolidating local services and visualizing neighborhood-level data, we aim to promote wellbeing across the community.
                             </p>
                         </div>
                     </div>
@@ -46,8 +44,8 @@ const Home = () => {
                             <p className="grid-headtext font-bold text-neutral-400 text-xl hover:text-white transition-colors">Our
                                 Target End User</p>
                             <p className="grid-subtext text-white text-lg">
-                                Low- to middle-income families (particularly renters or those in need of affordable
-                                housing) and unemployed individuals who are in need of jobs in the Hartford, CT Area.
+                            Residents of Hartford, CT, including low-to-middle income families, renters seeking housing resources, 
+                            and individuals facing unemployment or economic hardship.
                             </p>
                         </div>
                     </div>

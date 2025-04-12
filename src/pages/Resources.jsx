@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles/Resources.css";
 
 const Resources = () => {
   const resourceCategories = [
@@ -8,30 +9,30 @@ const Resources = () => {
       icon: "🧠",
       resources: [
         {
-          name: "Hartford Behavioral Health Services",
+          name: "Behavioral Health Services",
           description: "24/7 crisis support and counseling",
           link: "https://www.hartfordbehavioralhealth.com/",
         },
         {
-          name: "Example Organization",
-          description: "Example Description",
-          link: "https://example.com",
+          name: "Mental Health Facilities",
+          description: "Centralized hub of Hartford mental health services",
+          link: "https://www.mentalhealthclinics.org/clinics/connecticut/hartford-county.html?msclkid=d91963c9faa91b2378140433555804ee&utm_source=bing&utm_medium=cpc&utm_campaign=Mental%20Health%20Clinics&utm_term=mental%20health%20services%20Hartford%20County%20CT&utm_content=Mental%20Clinics%20-%20Hartford%20County,%20CT",
         },
       ],
     },
     {
-      title: "Physical Health",
+      title: "Medical Care",
       icon: "🏥",
       resources: [
+        {
+          name: "Hartford Health & Human Services Department",
+          description: "Provides health services to promote community wellbeing",
+          link: "https://www.hartfordct.gov/Government/Departments/HHS",
+        },
         {
           name: "Community Health Services",
           description: "Sliding scale medical services",
           link: "https://chshartford.org/",
-        },
-        {
-          name: "Example Organization",
-          description: "Example Description",
-          link: "https://example.com",
         },
       ],
     },
@@ -40,14 +41,14 @@ const Resources = () => {
       icon: "💰",
       resources: [
         {
-          name: "Example Organization",
-          description: "Example Description",
-          link: "https://example.com",
+          name: "Community Renewal Team",
+          description: "14 Week Financial Literacy Course",
+          link: "https://www.crtct.org/programs/basic-needs/financial-literacy/",
         },
         {
-          name: "Example Organization",
-          description: "Example Description",
-          link: "https://example.com",
+          name: "Hartford Healthcare",
+          description: "Financial assistance for medical expenses",
+          link: "https://hartfordhealthcare.org/patients-visitors/patients/billing-insurance/financial-assistance/patient-financial-assistance",
         },
       ],
     },
@@ -56,14 +57,14 @@ const Resources = () => {
       icon: "👨‍👩‍👧‍👦",
       resources: [
         {
-          name: "Example Organization",
-          description: "Example Description",
-          link: "https://example.com",
+          name: "Hartford Community Programs",
+          description: "Opportunities can be found in the Community Programs tab",
+          link: "https://www.hartfordct.gov/Government/Departments/Mayor-Arulampalam/Community-Engagement",
         },
         {
-          name: "Example Organization",
-          description: "Example Description",
-          link: "https://example.com",
+          name: "Hartford Communities That Care",
+          description: "Helps promote a safe, drug-free environment for youth and families",
+          link: "https://www.hartfordctc.org/index.php",
         },
       ],
     },
@@ -82,58 +83,34 @@ const Resources = () => {
           </p>
         </div>
 
-        {/* Search Bar */}
-        <div className="mb-10 max-w-2xl mx-auto">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search resources..."
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 px-5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-blue-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-
         {/* Resource Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 items-stretch">
           {resourceCategories.map((category, index) => (
             <div
               key={index}
-              className="bg-gray-900 border border-gray-700 rounded-xl p-6 hover:border-blue-400 transition-all"
+              className="bg-gray-900 border border-gray-700 rounded-xl p-6 hover:border-blue-400 transition-all h-full flex flex-col justify-between"
             >
-              <div className="text-4xl mb-4">{category.icon}</div>
-              <h2 className="text-xl font-bold text-blue-400 mb-4">
-                {category.title}
-              </h2>
-              <ul className="space-y-3">
+              <div>
+                <div className="text-4xl mb-4 text-center">{category.icon}</div>
+                <h2 className="text-xl font-bold text-blue-400 mb-6 text-center">
+                  {category.title}
+                </h2>
+              </div>
+              <ul className="flex-grow flex flex-col gap-4">
                 {category.resources.map((resource, idx) => (
                   <li
                     key={idx}
-                    className="border-b border-gray-700 pb-3 last:border-0 last:pb-0"
+                    className="bg-gray-800 p-4 rounded-lg flex flex-col justify-start h-[150px]"
                   >
                     <a
                       href={resource.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block hover:text-blue-300 transition-colors no-underline hover:no-underline text-center"
+                      style={{ boxShadow: 'none', outline: 'none' }}
+                      className="block h-full text-center no-underline hover:no-underline hover:text-blue-300"
                     >
                       <h3 className="font-medium">{resource.name}</h3>
-                      <p className="text-sm text-gray-400">
+                      <p className="scrollbar text-sm text-gray-400 text-center max-h-[60px] overflow-hidden hover:overflow-y-auto">
                         {resource.description}
                       </p>
                     </a>

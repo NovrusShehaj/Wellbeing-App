@@ -78,8 +78,7 @@ const Resources = () => {
             Hartford Community Resources
           </h1>
           <p className="text-blue-200 font-medium text-lg sm:text-xl max-w-3xl mx-auto">
-            Curated local services and programs to support your wellbeing
-            journey
+            Curated local services and programs to support your wellbeing journey
           </p>
         </div>
 
@@ -151,8 +150,9 @@ const Resources = () => {
             Need More Help?
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gray-800 p-5 rounded-lg text-center">
-              <h3 className="font-bold text-lg mb-3 flex items-center">
+            {/* Emergency Contacts */}
+            <div className="bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-700">
+              <h3 className="font-bold text-lg mb-4 flex items-center text-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mr-2 text-blue-400"
@@ -169,23 +169,40 @@ const Resources = () => {
                 </svg>
                 Emergency Contacts
               </h3>
-              <ul className="space-y-2">
-                <li>
-                  Suicide Prevention: <span className="text-blue-400">xxx</span>
+              <ul className="space-y-3 text-gray-300 text-left">
+                <li className="flex justify-between items-start w-full">
+                  <span className="w-2/3">The Village for Families & Children</span>
+                  <a
+                    href="tel:8602364511"
+                    className="text-blue-400 no-underline whitespace-nowrap"
+                  >
+                    (860) 236-4511
+                  </a>
                 </li>
-                <li>
-                  Crisis Text Line:{" "}
-                  <span className="text-blue-400">Text HOME to xxxxxx</span>
+                <li className="flex justify-between items-start w-full">
+                  <span className="w-2/3">Hartford Police Department</span>
+                  <a
+                    href="tel:8607574000"
+                    className="text-blue-400 no-underline whitespace-nowrap"
+                  >
+                    (860) 757-4000
+                  </a>
                 </li>
-                <li>
-                  Domestic Violence:{" "}
-                  <span className="text-blue-400">x-xxx-xxx-xxxx</span>
+                <li className="flex justify-between items-start w-full">
+                  <span className="w-2/3">Hartford Fire Department</span>
+                  <a
+                    href="tel:8607574500"
+                    className="text-blue-400 no-underline whitespace-nowrap"
+                  >
+                    (860) 757-4500
+                  </a>
                 </li>
               </ul>
             </div>
 
+            {/* City Services */}
             <div className="bg-gray-800 p-5 rounded-lg">
-              <h3 className="font-bold text-lg mb-3 flex items-center">
+              <h3 className="font-bold text-lg mb-4 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mr-2 text-blue-400"
@@ -202,23 +219,25 @@ const Resources = () => {
                 </svg>
                 City Services
               </h3>
-              <ul className="space-y-2">
-                <li>
-                  Hartford 311: <span className="text-blue-400">Dial 311</span>
+              <ul className="space-y-6 text-left text-gray-300">
+                <li className="flex justify-between items-start w-full">
+                  <span className="w-2/3">Hartford 311</span>
+                  <a href="tel:311" className="text-blue-400 no-underline whitespace-nowrap">Dial 311</a>
                 </li>
-                <li>
-                  Food Assistance:{" "}
-                  <span className="text-blue-400">xxx-xxx-xxxx</span>
+                <li className="flex justify-between items-start w-full">
+                  <span className="w-2/3">Hands On Hartford Pantry</span>
+                  <a href="tel:8607283201" className="text-blue-400 no-underline whitespace-nowrap">(860) 728-3201</a>
                 </li>
-                <li>
-                  Homeless Services:{" "}
-                  <span className="text-blue-400">xxx-xxx-xxxx</span>
+                <li className="flex justify-between items-start w-full">
+                  <span className="w-2/3">Mercy Housing and Shelter</span>
+                  <a href="tel:8608082048" className="text-blue-400 no-underline whitespace-nowrap">(860) 808-2048</a>
                 </li>
               </ul>
             </div>
 
+            {/* Online Resources */}
             <div className="bg-gray-800 p-5 rounded-lg">
-              <h3 className="font-bold text-lg mb-3 flex items-center">
+              <h3 className="font-bold text-lg mb-4 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 mr-2 text-blue-400"
@@ -235,28 +254,19 @@ const Resources = () => {
                 </svg>
                 Online Resources
               </h3>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 <li>
-                  <a
-                    href="https://example.com"
-                    className="text-blue-400 no-underline hover:no-underline text-center"
-                  >
-                    CT.gov Services
+                  <a href="https://handsonhartford.org/" className="text-blue-400 no-underline hover:no-underline text-center">
+                    Hands On Hartford Pantry
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://example.com"
-                    className="text-blue-400 no-underline hover:no-underline text-center"
-                  >
-                    FindHelp.org
+                  <a href="https://mercyhousingct.org/" className="text-blue-400 no-underline hover:no-underline text-center">
+                    Mercy Housing and Shelter
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="https://example.com"
-                    className="text-blue-400 no-underline hover:no-underline text-center"
-                  >
+                  <a href="https://www.211ct.org/" className="text-blue-400 no-underline hover:no-underline text-center">
                     211 Connecticut
                   </a>
                 </li>
@@ -269,7 +279,7 @@ const Resources = () => {
         <div className="text-center">
           <Link
             to="/dashboard"
-            className="inline-block bg-blue-800 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors border border-blue-600"
+            className="inline-block bg-blue-800 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors border border-blue-600 no-underline"
           >
             Back to Dashboard
           </Link>
@@ -280,3 +290,4 @@ const Resources = () => {
 };
 
 export default Resources;
+

@@ -301,13 +301,12 @@ const Dashboard = () => {
             {/* Historical Data Card */}
             <Link
               to="/historical-data"
-              className="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all text-center flex flex-col items-center"
-            >
+              className="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all text-center flex flex-col justify-between items-center no-underline h-full"            >
               <div className="text-blue-400 text-3xl mb-4">📊</div>
               <h3 className="font-semibold text-lg mb-2 text-white">
                 Historical Data
               </h3>
-              <p className="text-gray-400 text-center mb-6 px-4">
+              <p className="text-gray-400 text-center mb-6 px-4 h-20">                
                 View trends and historical wellbeing metrics
               </p>
               <div className="w-full max-w-[200px] bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600">
@@ -318,13 +317,12 @@ const Dashboard = () => {
             {/* Methodology Card */}
             <Link
               to="/methodology"
-              className="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all text-center flex flex-col items-center"
-            >
+              className="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all text-center flex flex-col justify-between items-center no-underline h-full"            >
               <div className="text-blue-400 text-3xl mb-4">📝</div>
               <h3 className="font-semibold text-lg mb-2 text-white">
                 Methodology
               </h3>
-              <p className="text-gray-400 text-center mb-6 px-4">
+              <p className="text-gray-400 text-center mb-6 px-4 h-20">
                 Learn how we calculate wellbeing scores
               </p>
               <div className="w-full max-w-[200px] bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600">
@@ -335,13 +333,12 @@ const Dashboard = () => {
             {/* Interactive Map Card */}
             <Link
               to="/dhmap-page"
-              className="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all text-center flex flex-col items-center"
-            >
+              className="bg-gray-900 border border-gray-700 rounded-lg p-6 hover:border-blue-400 transition-all text-center flex flex-col justify-between items-center no-underline h-full"            >
               <div className="text-blue-400 text-3xl mb-4">🗺️</div>
               <h3 className="font-semibold text-lg mb-2 text-white">
                 Interactive Map
               </h3>
-              <p className="text-gray-400 text-centermb-6 px-4">
+              <p className="text-gray-400 text-center mb-6 px-4 h-20">                
                 Explore the full interactive map
               </p>
               <div className="w-full max-w-[200px] bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600">

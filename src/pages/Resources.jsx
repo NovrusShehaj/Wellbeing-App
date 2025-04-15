@@ -5,6 +5,22 @@ import "../styles/Resources.css";
 const Resources = () => {
   const resourceCategories = [
     {
+      title: "Housing",
+      icon: "🏠",
+      resources: [
+        {
+          name: "HOH Housing",
+          description: "Affordable housing and support services for families and individuals with serious health conditions, including HIV/AIDS.",
+          link: "https://handsonhartford.org/caring-in-action/hoh-housing/",
+        },
+        {
+          name: "Community Renewal Team",
+          description: "Affordable family and senior housing in Hartford County.",
+          link: "https://www.crtct.org/programs/housing-shelters/affordable-housing/",
+        },
+      ],
+    },
+    {
       title: "Mental Health",
       icon: "🧠",
       resources: [
@@ -68,6 +84,22 @@ const Resources = () => {
         },
       ],
     },
+    {
+      title: "Food Assistance",
+      icon: "🍽️",
+      resources: [
+        {
+          name: "Connecticut Foodshare",
+          description: "Find mobile food pantries locally and apply for SNAP benefits",
+          link: "https://www.ctfoodshare.org/get-help",
+        },
+        {
+          name: "MANNA Food and Neighborhood Services",
+          description: "Food pantry services for Hartford residents",
+          link: "https://handsonhartford.org/caring-in-action/manna-food-and-neighborhood-services/",
+        },
+      ],
+    },
   ];
 
   return (
@@ -84,7 +116,7 @@ const Resources = () => {
         </div>
 
         {/* Resource Categories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 items-stretch">
           {resourceCategories.map((category, index) => (
             <div
               key={index}
@@ -110,7 +142,7 @@ const Resources = () => {
                       className="block h-full text-center no-underline hover:no-underline hover:text-blue-300"
                     >
                       <h3 className="font-medium">{resource.name}</h3>
-                      <p className="scrollbar text-sm text-gray-400 text-center max-h-[60px] overflow-hidden hover:overflow-y-auto">
+                      <p className="scrollbar text-sm text-gray-400 text-center max-h-[60px] ">
                         {resource.description}
                       </p>
                     </a>
@@ -234,7 +266,7 @@ const Resources = () => {
               <ul className="space-y-3">
                 <li>
                   <a href="https://handsonhartford.org/" className="text-blue-400 no-underline hover:no-underline text-center">
-                    Hands On Hartford Pantry
+                    Hands On Hartford Pantry & Housing
                   </a>
                 </li>
                 <li>
@@ -245,6 +277,11 @@ const Resources = () => {
                 <li>
                   <a href="https://www.211ct.org/" className="text-blue-400 no-underline hover:no-underline text-center">
                     211 Connecticut
+                  </a>
+                </li>
+                <li>
+                  <a href="https://affordablehousingonline.com/housing-search/Connecticut/Hartford" className="text-blue-400 no-underline hover:no-underline text-center">
+                    Affordable Housing Online
                   </a>
                 </li>
               </ul>

@@ -20,11 +20,11 @@ export const navLinks = [
     //     name: 'Education',
     //     href: '/education',
     // },
-    {
-        id: 5,
-        name: 'Housing',
-        href: '/housing',
-    },
+    // {
+    //     id: 5,
+    //     name: 'Housing',
+    //     href: '/housing',
+    // },
     {
         id: 6,
         name: 'Map',
@@ -40,11 +40,11 @@ export const navLinks = [
         name: 'Services',
         href: '/access-to-services',
     },
-    {
-        id: 9,
-        name: 'Wellbeing Score',
-        href: '/wellbeing-score',
-    },
+    // {
+    //     id: 9,
+    //     name: 'Wellbeing Score',
+    //     href: '/wellbeing-score',
+    // },
 
 ];
 

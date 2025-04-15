@@ -412,7 +412,76 @@ const resources = [
     address: "Connecticut State Capitol, 210 Capitol Ave, Hartford, CT 06106",
     website: "https://portal.ct.gov/About/State-Symbols/The-State-Capitol", 
     phone: "+18605459000"
-  }
+  },
+  { 
+    id: 46,
+    type: "housing",
+    position: [41.7811648,-72.6724596],
+    name: "Community Renewal Team",
+    address:"555 Windsor Street, Hartford, CT 06106",
+    website: "https://www.crtct.org/",
+    phone: "+18605605600"
+  },
+  { 
+    id: 47,
+    type: "housing",
+    position: [41.7372355,-72.7120219],
+    name: "Hartford Housing Authority",
+    address:"180 John D. Wardlaw Way, Hartford, CT 06106",
+    website: "https://www.hartfordhousing.org/index.php",
+    phone: "+18607238400"
+  },
+  { 
+    id: 48,
+    type: "housing",
+    position: [41.7547177,-72.6965654],
+    name: "Summit Park Apartments",
+    address:"459 Summit St, Hartford, CT 06106",
+    website: "https://affordablehousingonline.com/housing-search/Connecticut/Hartford/Summit-Park-Apartments/10052889"
+  },
+  { 
+    id: 49,
+    type: "housing",
+    position: [41.7551702,-72.6930267],
+    name: "Zion Street Apartments",
+    address:"511 Zion St, Hartford, CT 06106",
+    website: "https://affordablehousingonline.com/housing-search/Connecticut/Hartford/Zion-Street-Apartments/10056759",
+  },
+  { 
+    id: 50,
+    type: "housing",
+    position: [41.7904774,-72.6817872],
+    name: "Jackie Schaeffer Apartments (Family Housing)",
+    address:"711 Garden Street, Hartford, CT 06106"
+  },
+  { 
+    id: 51,
+    type: "housing",
+    position: [41.755018,-72.674402],
+    name: "Wethersfield Commons (Family Housing)", 
+    address:"32-34 & 36-38 Wethersfield Avenue, Hartford, CT 06106"
+  },
+  { 
+    id: 52,
+    type: "housing",
+    position: [41.7861232,-72.6780693],
+    name: "Generations Campus (Family Housing)",
+    address:"35 Clark Street, Hartford, CT 06106"
+  },
+  { 
+    id: 53,
+    type: "housing",
+    position: [41.801717,-72.6948399],
+    name: "Coventry Place (Senior Housing)",
+    address:"160 Coventry Street, Bloomfield, CT 06002"
+  },
+  { 
+    id: 54,
+    type: "housing",
+    position: [41.7861209,-72.6780274],
+    name: "St. Michael's (Senior Housing)",
+    address:"35 Clark Street, Hartford, CT 06106"
+  },
 ];
 
 
@@ -478,6 +547,17 @@ const ResourceInfoPanel = ({ resource, onClose }) => {
           className="inline-block mt-2 bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600"
         >
           Visit Website
+        </a>
+      )}
+      <br></br>
+      {resource.phone && (
+        <a
+          href={`tel:${resource.phone}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-2 bg-blue-800 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors border border-blue-600"
+        >
+          Call: {resource.phone}
         </a>
       )}
     </div>

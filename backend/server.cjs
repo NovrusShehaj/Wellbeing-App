@@ -3,7 +3,7 @@ const connectDB = require("./config/db.cjs");
 const neighborhoods = require("./routes/neighborhoods.cjs");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const taxGridRoutes = require("./routes/taxGrid.cjs");
+//const taxGridRoutes = require("./routes/taxGrid.cjs");
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use("/api/neighborhoods", neighborhoods);
-app.use("/api/taxgrids", taxGridRoutes);
+//app.use("/api/taxgrids", taxGridRoutes);
 
 const PORT = process.env.PORT || 5000;
 

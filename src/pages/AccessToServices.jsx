@@ -13,7 +13,7 @@ const AccessToServices = () => {
             {
                 id: 1,
                 name: "Hartford Housing Authority",
-                description: "Public housing and rental assistance programs",
+                description: "Public housing and rental assistance programs, applications for Housing Choice Voucher (Section 8) housing and public housing",
                 phone: "(860) 723-8493",
                 website: "https://www.hartfordhousing.org",
                 type: "government"

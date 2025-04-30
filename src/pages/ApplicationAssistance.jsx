@@ -141,7 +141,7 @@ const ApplicationAssistance = () => {
                 </section>
 
                 {/* Self-Help Resources */}
-                <section className="mb-20">
+                {/* <section className="mb-20">
                     <h2 className="text-3xl font-bold text-blue-400 mb-8 border-b border-gray-700 pb-4">
                         Self-Help Resources
                     </h2>
@@ -191,7 +191,7 @@ const ApplicationAssistance = () => {
                             </div>
                         ))}
                     </div>
-                </section>
+                </section> */}
 
                 {/* FAQ Section */}
                 <section>

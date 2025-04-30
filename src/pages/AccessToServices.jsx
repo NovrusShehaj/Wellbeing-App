@@ -83,7 +83,7 @@ const AccessToServices = () => {
                 </div>
 
                 {/* Filter Tabs */}
-                <div className="filters mb-10 flex items-center object-center">
+                <div className="filters mb-10 flex items-center object-center justify-center">
                     <button
                         className={`mr-4 py-2 px-6 border-2 border-white text-white cursor-pointer text-lg rounded-md flex items-center justify-center h-10 ${activeTab === "all" ? "bg-blue-800 border-blue-400" : "bg-black hover:text-blue-200"}`}
                         onClick={() => setActiveTab("all")}
@@ -137,8 +137,8 @@ const AccessToServices = () => {
           <h2 className="text-2xl font-bold text-blue-400 mb-8 text-center">
             Additional Resources
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="resource-card flex flex-col justify-between h-[300px] text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* <div className="resource-card flex flex-col justify-between h-[300px] text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
               <div>
                 <div className="text-blue-400 text-3xl mb-3">📅</div>
                 <h3 className="font-semibold text-lg mb-2 text-white">Upcoming Events</h3>
@@ -150,7 +150,7 @@ const AccessToServices = () => {
               >
                 View Calendar
               </Link>
-            </div>
+            </div> */}
 
             <div className="resource-card flex flex-col justify-between h-[300px] text-center p-4 border border-gray-700 rounded-lg hover:border-blue-400 transition-all">
               <div>

@@ -621,7 +621,7 @@ const MapPage = () => {
           <h1 className="text-blue-400 font-bold text-4xl md:text-5xl mb-2">
             Hartford Resources Map
           </h1>
-          <h2 className="text-blue-200 font-medium text-xl md:text-2xl">
+          <h2 className="text-blue-200 font-medium text-xl md:text-2xl text-center">
             Explore Community Resources in Hartford
           </h2>
         </div>

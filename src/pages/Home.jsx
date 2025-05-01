@@ -29,8 +29,8 @@ const Home = () => {
                             <p className="grid-headtext font-bold text-neutral-400 text-xl hover:text-white transition-colors mx-auto">About
                                 Our Project</p>
                             <p className="grid-subtext text-white text-lg">
-                            This project provides a centralized platform for accessing important housing, employment and general wellbeing resources in Hartford, CT. 
-                            By consolidating local services and visualizing neighborhood-level data, we aim to promote wellbeing across the community.
+                            This project aims to improve the livelihood of families in Hartford, CT by providing a centralized platform for accessing important housing, employment and general wellbeing resources. 
+                            By consolidating local services and visualizing neighborhood-level data, we aim to promote wellbeing across the community with the most helpful and up to date information for our users.
                             </p>
                         </div>
                     </div>
@@ -42,10 +42,9 @@ const Home = () => {
                              className="w-full sm:h-[266px] h-fit object-contain"/>
                         <div>
                             <p className="grid-headtext font-bold text-neutral-400 text-xl hover:text-white transition-colors">Our
-                                Target End User</p>
+                                Intended Demographic</p>
                             <p className="grid-subtext text-white text-lg">
-                            Residents of Hartford, CT, including low-to-middle income families, renters seeking housing resources, 
-                            and individuals facing unemployment or economic hardship.
+                            Hartford's lower to middle class residents are the driving force behind our project. We cater to renters in need of affordable housing and individuals looking for employment.
                             </p>
                         </div>
                     </div>
@@ -58,13 +57,11 @@ const Home = () => {
                             <p className="grid-headtext font-bold text-neutral-400 text-xl hover:text-white transition-colors">Our
                                 Focus</p>
                             <p className="grid-subtext text-white text-lg">
-                                We are focused on providing solutions to increase well being of the community in terms
-                                of Housing insecurity, financial stress, and unemployment.
+                                Housing insecurity, financial stress, and unemployment are issues you can find anywhere across the globe.
                             </p>
                             <br/>
                             <p className="grid-subtext text-white text-lg">
-                                We want to help low-middle class parties in the Hartford be able to have access to
-                                affordable housing solutions, job opportunities, and an increased financial stability.
+                                Our focus us providing housing solutions, job opportunities, and increased financial stability to the citizens of Hartford.
                             </p>
                         </div>
                     </div>
@@ -75,21 +72,21 @@ const Home = () => {
                         <img src="assets/plan.png" alt="grid-3" className="w-full sm:h-[266px] h-fit object-contain"/>
                         <div>
                             <p className="grid-headtext font-bold text-neutral-400 text-xl hover:text-white transition-colors">Our
-                                Plan</p>
+                                Resources</p>
                             <p className="grid-subtext text-white text-lg">
-                                We plan on developing a web app that can provide users access to resources and
-                                information that can help them improve their wellbeing.
+                                Our web app provides users access to resources and
+                                information geared towards improving their well-being.
                             </p>
                             <br/>
                             <p className="grid-subtext text-white text-lg">
-                                We are planning on incorporating data from various sources to provide a comprehensive
-                                view of the wellbeing of the
-                                community.
+                                We have worked closely with the U.S. Census Bureau to incorporate
+                                data from various sources to provide a comprehensive
+                                understanding of the Hartford community's economic state.
                             </p>
                             <br/>
                             <p className="grid-subtext text-white text-lg">
-                                Currently some datasets we are looking at include data relating to salary, ability to
-                                buy a house such as the following:
+                                The datasets we investigate summarize the financial status of Hartford residents.
+                                Here are our current resources:
                             </p>
                             <br/>
                         </div>

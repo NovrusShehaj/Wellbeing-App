@@ -15,11 +15,11 @@ const About = () => {
     };
 
     const teamMembers = [
-        { name: "Adarsh Rao Makarla", email: "adarsh_rao.makarla@uconn.edu" },
-        { name: "Benjamin Acorda", email: "benjamin.acorda@uconn.edu" },
-        { name: "Novrus Shehaj", email: "novrus.shehaj@uconn.edu" },
-        { name: "Pierson Faulk", email: "pierson.faulk@uconn.edu" },
-        { name: "Zachary Figuenick", email: "zachary.figuenick@uconn.edu" },
+        { name: "Adarsh Rao Makarla", email: "adarsh_rao.makarla@uconn.edu", image: "assets/sdp_adarsh.jpg" },
+        { name: "Benjamin Acorda", email: "benjamin.acorda@uconn.edu", image: "assets/sdp_ben.jpg" },
+        { name: "Novrus Shehaj", email: "novrus.shehaj@uconn.edu", image: "assets/sdp_nov.jpg" },
+        { name: "Pierson Faulk", email: "pierson.faulk@uconn.edu", image: "assets/sdp_pierson.jpg" },
+        { name: "Zachary Figuenick", email: "zachary.figuenick@uconn.edu", image: "assets/sdp_zack.jpg" },
     ];
 
     return (
@@ -33,7 +33,7 @@ const About = () => {
                 {teamMembers.map((member, index) => (
                     <div key={index} className="col-span-1 xl:row-span-3 flex justify-center items-center">
                         <div className="grid-container flex flex-col justify-center items-center">
-                            <img src="assets/husky2.png" alt={`grid-${index + 1}`}
+                            <img src={member.image} alt={`grid-${index + 1}`}
                                  className="w-full sm:h-[276px] h-fit object-contain"/>
                             <div>
                                 <strong
